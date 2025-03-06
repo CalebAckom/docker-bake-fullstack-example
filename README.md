@@ -62,6 +62,12 @@ docker run -d -p 3000:80 --name frontend calebackom/task-frontend:latest
 
 * Open your browser and navigate to `http://localhost:3000`.
 
+5. To verify that the images are multi-architecture, you can inspect the image manifest:
+```shell
+docker manifest inspect calebackom/task-backend:latest
+docker manifest inspect calebackom/task-frontend:latest
+```
+
 ## Key Files and Their Purpose
 
 * `docker-bake.hcl`: Defines the Docker Bake build targets, groups, and tags. This file is the primary focus of this repository.
