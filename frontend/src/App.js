@@ -5,6 +5,7 @@ import './App.css';
 function App() {
     const [tasks, setTasks] = useState([]);
     const [newTask, setNewTask] = useState('');
+    const [errorMessage, setErrorMessage] = useState('');
 
     useEffect(() => {
         axios.get('http://localhost:8000/tasks')
@@ -13,6 +14,13 @@ function App() {
     }, []);
 
     const addTask = () => {
+        if (newTask.trim() === '') {
+            setErrorMessage('Task cannot be empty');
+            return;
+        }
+
+        setErrorMessage('');
+
         axios.post('http://localhost:8000/tasks',
             { text: newTask })
             .then((res) => {
@@ -38,6 +46,7 @@ function App() {
                 />
                 <button onClick={addTask}>Add Task</button>
             </div>
+            {errorMessage && <div className="error-message">{errorMessage}</div>}
         </div>
     );
 }
