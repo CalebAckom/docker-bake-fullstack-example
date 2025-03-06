@@ -70,6 +70,9 @@ docker manifest inspect calebackom/task-frontend:latest
 
 **NB:**
 - The `docker buildx bake` command requires Docker BuildKit to be enabled. You can enable it by setting the `DOCKER_BUILDKIT=1` environment variable.
+```shell
+DOCKER_BUILDKIT=1 docker bake --push
+```
 - Alternatively, you can permanently enable BuildKit by editing your Docker daemon configuration file (/etc/docker/daemon.json on Linux) and setting the buildkit feature to true:
 ```json
 {
