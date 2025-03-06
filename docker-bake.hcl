@@ -13,10 +13,12 @@ target "backend" {
     context = "./backend"
     dockerfile = "./Dockerfile"
     tags = ["${REGISTRY}/task-backend:latest"]
+    platforms = ["linux/amd64", "linux/arm64"]
 }
 
 target "frontend" {
     context = "./frontend"
     dockerfile = "./Dockerfile"
     tags = ["${REGISTRY}/task-frontend:latest"]
+    platforms = ["linux/amd64", "linux/arm64"]
 }
