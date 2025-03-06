@@ -68,6 +68,17 @@ docker manifest inspect calebackom/task-backend:latest
 docker manifest inspect calebackom/task-frontend:latest
 ```
 
+**NB:**
+- The `docker buildx bake` command requires Docker BuildKit to be enabled. You can enable it by setting the `DOCKER_BUILDKIT=1` environment variable.
+- Alternatively, you can permanently enable BuildKit by editing your Docker daemon configuration file (/etc/docker/daemon.json on Linux) and setting the buildkit feature to true:
+```json
+{
+  "features": {
+    "buildkit": true
+  }
+}
+```
+
 ## Key Files and Their Purpose
 
 * `docker-bake.hcl`: Defines the Docker Bake build targets, groups, and tags. This file is the primary focus of this repository.
